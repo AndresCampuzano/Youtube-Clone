@@ -9,7 +9,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint . --fix --ext .js,.jsx && stylelint ./components/**/*.js  ./styles/*.js",
-    "prettier": "prettier . --write"
+    "prettier": "prettier . --write",
+    "fix": "npm run prettier && npm run lint"
   },
   "dependencies": {
     "next": "10.2.0",
