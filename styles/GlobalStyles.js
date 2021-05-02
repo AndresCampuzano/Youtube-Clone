@@ -2,20 +2,43 @@ import { createGlobalStyle } from "styled-components"
 import { Variables } from "./Variables"
 
 const GlobalStyles = createGlobalStyle`
-    html {
+    & * {
+	margin: 0;
+	padding: 0;
+	border: 0;
+    }
+
+    & html {
         scroll-behavior: smooth;
     }
-    body {
+
+    & body {
         margin: 0;
         padding: 0;
         background-color: ${Variables.colorBackground};
         font-family: 'Roboto', sans-serif;
         font-size: 14px;
-        color:${Variables.colorWhite};
+        color: ${Variables.colorWhite};
     }
-    a {
+
+    & a {
         text-decoration: none;
     }
+
+    /* ScrollBar Styles*/
+    ::-webkit-scrollbar {
+    width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: ${Variables.colorScrollBarIdle};
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+    background: ${Variables.colorScrollBarHover};
+    }
+    /* End ScrollBar Styles*/
 `
 
 export default GlobalStyles
