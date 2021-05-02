@@ -4,7 +4,7 @@ export const ItemNormal = ({ icon, title, onClick }) => {
   return (
     <Container onClick={onClick}>
       {icon}
-      {title}
+      <p>{title}</p>
     </Container>
   )
 }

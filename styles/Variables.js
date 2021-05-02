@@ -9,9 +9,10 @@ export const Variables = {
   colorNavTrans: "rgba(32, 32, 32, 0.952)",
   colorSearchBar: "#121212",
   colorIconsIdle: "#909090",
+  colorTextNavbar: "#909090",
   colorIconsFocused: "#FFFFFF",
-  colorScrollBarIdle: "#9c9c9c",
-  colorScrollBarHover: "#909090",
+  colorScrollBarIdle: "#929292",
+  colorScrollBarHover: "#797979",
   // Breakpoints using min-width (mobile-first)
   minMobile: "576px",
   minTablet: "768px",
