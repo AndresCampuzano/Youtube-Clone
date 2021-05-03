@@ -39,6 +39,12 @@ const GlobalStyles = createGlobalStyle`
     background: ${Variables.colorScrollBarHover};
     }
     /* End ScrollBar Styles*/
+
+    & ::placeholder {
+    opacity: 1; /* Firefox */
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    }
 `
 
 export default GlobalStyles

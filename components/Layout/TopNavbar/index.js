@@ -10,7 +10,7 @@ import {
   _LeftIconsContainer,
   _CenterContainer,
   _RightIconsContainer,
-  StyledImage,
+  _StyledImage,
 } from "./styles"
 
 export const TopNavbar = () => {
@@ -32,7 +32,7 @@ export const TopNavbar = () => {
           <IconUploadDark />
           <IconAppsDark />
           <IconBellDark />
-          <StyledImage
+          <_StyledImage
             src="/andres_photo.jpg"
             width={28}
             height={28}

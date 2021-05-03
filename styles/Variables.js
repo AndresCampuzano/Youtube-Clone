@@ -13,6 +13,8 @@ export const Variables = {
   colorIconsFocused: "#FFFFFF",
   colorScrollBarIdle: "#929292",
   colorScrollBarHover: "#797979",
+  // Dedicated colors - cards
+  colorFontGrayIdle: "#AAAAAA",
   // Breakpoints using min-width (mobile-first)
   minMobile: "576px",
   minTablet: "768px",

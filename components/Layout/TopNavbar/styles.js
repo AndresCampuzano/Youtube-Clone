@@ -5,6 +5,7 @@ import { Variables } from "../../../styles/Variables"
 
 export const _Container = styled.header`
   position: fixed;
+  z-index: 1;
   top: 0;
   right: 0;
   left: 0;
@@ -52,6 +53,6 @@ export const _RightIconsContainer = styled.div`
   }
 `
 
-export const StyledImage = styled(Image)`
+export const _StyledImage = styled(Image)`
   border-radius: 50%;
 `
