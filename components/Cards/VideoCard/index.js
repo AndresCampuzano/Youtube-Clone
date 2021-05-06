@@ -1,3 +1,6 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+
 import { IconMoreOptions } from "../../Icons/Card/IconMoreOptions"
 import {
   _Container,
@@ -9,35 +12,99 @@ import {
   _StyledImageChannel,
 } from "./styles"
 
-export const VideoCard = () => {
+export const VideoCard = ({
+  title,
+  image,
+  channelTitle,
+  viewCount,
+  channelId,
+}) => {
+  const [channelImage, setChannelImage] = useState()
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://youtube.googleapis.com/youtube/v3/channels?part=snippet%2CcontentDetails%2Cstatistics&id=${channelId}&key=${process.env.URL_KEY}`
+      )
+      .then(
+        ({
+          data: {
+            items: [
+              {
+                snippet: {
+                  thumbnails: {
+                    default: { url },
+                  },
+                },
+              },
+            ],
+          },
+        }) => {
+          setChannelImage(url)
+        }
+      )
+      .catch((error) => {
+        console.error("error: ", error)
+      })
+  }, [channelId])
+
+  const test = new Date("2021-05-03T11:54:22Z").toLocaleDateString("de-DE")
+
+  function timeSince(date) {
+    var seconds = Math.floor((new Date() - date) / 1000)
+
+    var interval = seconds / 31536000
+
+    if (interval > 1) {
+      return Math.floor(interval) + " years"
+    }
+    interval = seconds / 2592000
+    if (interval > 1) {
+      return Math.floor(interval) + " months"
+    }
+    interval = seconds / 86400
+    if (interval > 1) {
+      return Math.floor(interval) + " days"
+    }
+    interval = seconds / 3600
+    if (interval > 1) {
+      return Math.floor(interval) + " hours"
+    }
+    interval = seconds / 60
+    if (interval > 1) {
+      return Math.floor(interval) + " minutes"
+    }
+    return Math.floor(seconds) + " seconds"
+  }
+  var aDay = 24 * 60 * 60 * 1000
+  console.log(timeSince(new Date(test - aDay)))
   return (
     <_Container>
       <_StyledImageMain
-        src="/demo.png"
+        src={image}
         width={680}
         height={380}
         layout="responsive"
-        alt="Title video here"
+        alt={title}
       />
 
       <_ContentContainer>
         <_DivChannelImage>
-          <_StyledImageChannel
-            src="/andres_photo.jpg"
-            width={36}
-            height={36}
-            layout="fixed"
-            alt="Title channel here"
-          />
+          {channelImage && (
+            <_StyledImageChannel
+              src={channelImage}
+              width={36}
+              height={36}
+              layout="fixed"
+              alt="Title channel here"
+            />
+          )}
         </_DivChannelImage>
 
         <_DivText>
-          <h2>
-            🌙Midnight Coding in Chicago | LoFi Jazz Hip-Hop [Code - Relax -
-            Study]
-          </h2>
-          <h3>The Soul of Wind</h3>
-          <p>123K views . 5 days ago</p>
+          <h2>{title}</h2>
+          <h3>{channelTitle}</h3>
+          <p>{viewCount} views . 5 days ago</p>
         </_DivText>
 
         <_DivMoreOptions>
