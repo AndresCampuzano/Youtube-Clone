@@ -13,7 +13,12 @@ export const _StyledImageMain = styled(Image)``
 
 export const _ContentContainer = styled.div`
   display: flex;
+  justify-content: space-between;
   margin-top: 10px;
+`
+
+export const _DivChannelAndTextContainer = styled.div`
+  display: flex;
 `
 
 export const _DivChannelImage = styled.div`
@@ -29,9 +34,16 @@ export const _DivText = styled.div`
   /* border: 1px solid green; */
 
   & h2 {
+    /* stylelint-disable */
+    display: -webkit-box;
+    overflow: hidden;
     font-size: 16px;
     font-weight: 500;
     line-height: 22px;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2; /* <<<<< number of lines to show */
+    -webkit-box-orient: vertical;
+    /* stylelint-enable */
   }
 
   & h3 {
@@ -52,5 +64,6 @@ export const _DivText = styled.div`
 
 export const _DivMoreOptions = styled.div`
   margin-left: 12px;
+  min-width: 24px;
   /* border: 1px solid purple; */
 `

@@ -10,6 +10,7 @@ import {
   _DivText,
   _DivMoreOptions,
   _StyledImageChannel,
+  _DivChannelAndTextContainer,
 } from "./styles"
 
 export const VideoCard = ({
@@ -20,6 +21,7 @@ export const VideoCard = ({
   channelId,
 }) => {
   const [channelImage, setChannelImage] = useState()
+  const [hooverSvg, setHoverSvg] = useState(false)
 
   useEffect(() => {
     axios
@@ -48,38 +50,42 @@ export const VideoCard = ({
       })
   }, [channelId])
 
-  const test = new Date("2021-05-03T11:54:22Z").toLocaleDateString("de-DE")
+  // const test = new Date("2021-05-03T11:54:22Z").toLocaleDateString("de-DE")
 
-  function timeSince(date) {
-    var seconds = Math.floor((new Date() - date) / 1000)
+  // function timeSince(date) {
+  //   var seconds = Math.floor((new Date() - date) / 1000)
 
-    var interval = seconds / 31536000
+  //   var interval = seconds / 31536000
 
-    if (interval > 1) {
-      return Math.floor(interval) + " years"
-    }
-    interval = seconds / 2592000
-    if (interval > 1) {
-      return Math.floor(interval) + " months"
-    }
-    interval = seconds / 86400
-    if (interval > 1) {
-      return Math.floor(interval) + " days"
-    }
-    interval = seconds / 3600
-    if (interval > 1) {
-      return Math.floor(interval) + " hours"
-    }
-    interval = seconds / 60
-    if (interval > 1) {
-      return Math.floor(interval) + " minutes"
-    }
-    return Math.floor(seconds) + " seconds"
-  }
-  var aDay = 24 * 60 * 60 * 1000
-  console.log(timeSince(new Date(test - aDay)))
+  //   if (interval > 1) {
+  //     return Math.floor(interval) + " years"
+  //   }
+  //   interval = seconds / 2592000
+  //   if (interval > 1) {
+  //     return Math.floor(interval) + " months"
+  //   }
+  //   interval = seconds / 86400
+  //   if (interval > 1) {
+  //     return Math.floor(interval) + " days"
+  //   }
+  //   interval = seconds / 3600
+  //   if (interval > 1) {
+  //     return Math.floor(interval) + " hours"
+  //   }
+  //   interval = seconds / 60
+  //   if (interval > 1) {
+  //     return Math.floor(interval) + " minutes"
+  //   }
+  //   return Math.floor(seconds) + " seconds"
+  // }
+  // var aDay = 24 * 60 * 60 * 1000
+  // console.log(timeSince(new Date(test - aDay)))
+
   return (
-    <_Container>
+    <_Container
+      onMouseEnter={() => setHoverSvg(true)}
+      onMouseLeave={() => setHoverSvg(false)}
+    >
       <_StyledImageMain
         src={image}
         width={680}
@@ -89,27 +95,27 @@ export const VideoCard = ({
       />
 
       <_ContentContainer>
-        <_DivChannelImage>
-          {channelImage && (
-            <_StyledImageChannel
-              src={channelImage}
-              width={36}
-              height={36}
-              layout="fixed"
-              alt="Title channel here"
-            />
-          )}
-        </_DivChannelImage>
+        <_DivChannelAndTextContainer>
+          <_DivChannelImage>
+            {channelImage && (
+              <_StyledImageChannel
+                src={channelImage}
+                width={36}
+                height={36}
+                layout="fixed"
+                alt="Title channel here"
+              />
+            )}
+          </_DivChannelImage>
 
-        <_DivText>
-          <h2>{title}</h2>
-          <h3>{channelTitle}</h3>
-          <p>{viewCount} views . 5 days ago</p>
-        </_DivText>
+          <_DivText>
+            <h2>{title}</h2>
+            <h3>{channelTitle}</h3>
+            <p>{viewCount} views . 5 days ago</p>
+          </_DivText>
+        </_DivChannelAndTextContainer>
 
-        <_DivMoreOptions>
-          <IconMoreOptions />
-        </_DivMoreOptions>
+        <_DivMoreOptions>{hooverSvg && <IconMoreOptions />}</_DivMoreOptions>
       </_ContentContainer>
     </_Container>
   )
