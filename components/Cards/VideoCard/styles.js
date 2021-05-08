@@ -4,6 +4,8 @@ import Image from "next/image"
 import { Variables } from "../../../styles/Variables"
 
 export const _Container = styled.article`
+  position: relative;
+
   & :hover {
     cursor: pointer;
   }

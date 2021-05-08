@@ -2,6 +2,8 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 
 import { IconMoreOptions } from "../../Icons/Card/IconMoreOptions"
+import { SmallIconWatchLaterHover } from "./SmallIconWatchLaterHover"
+import { IconWatchLaterCard } from "../../Icons/Card/IconWatchLaterCard"
 import {
   _Container,
   _StyledImageMain,
@@ -21,7 +23,7 @@ export const VideoCard = ({
   channelId,
 }) => {
   const [channelImage, setChannelImage] = useState()
-  const [hooverSvg, setHoverSvg] = useState(false)
+  const [hoverExtraContent, setHoverExtraContent] = useState(false)
 
   useEffect(() => {
     axios
@@ -83,9 +85,16 @@ export const VideoCard = ({
 
   return (
     <_Container
-      onMouseEnter={() => setHoverSvg(true)}
-      onMouseLeave={() => setHoverSvg(false)}
+      onMouseEnter={() => setHoverExtraContent(true)}
+      onMouseLeave={() => setHoverExtraContent(false)}
     >
+      {hoverExtraContent && (
+        <SmallIconWatchLaterHover
+          text="WATCH LATER"
+          icon={<IconWatchLaterCard />}
+        />
+      )}
+
       <_StyledImageMain
         src={image}
         width={680}
@@ -115,7 +124,9 @@ export const VideoCard = ({
           </_DivText>
         </_DivChannelAndTextContainer>
 
-        <_DivMoreOptions>{hooverSvg && <IconMoreOptions />}</_DivMoreOptions>
+        <_DivMoreOptions>
+          {hoverExtraContent && <IconMoreOptions />}
+        </_DivMoreOptions>
       </_ContentContainer>
     </_Container>
   )

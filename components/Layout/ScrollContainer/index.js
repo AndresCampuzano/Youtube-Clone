@@ -43,6 +43,7 @@ export const ScrollContainer = () => {
         </_LeftArrow>
       )}
 
+      <SmallCardTopScroll text="All" />
       <SmallCardTopScroll text="Frontend" />
       <SmallCardTopScroll text="React JS" />
       <SmallCardTopScroll text="Javascript" />
