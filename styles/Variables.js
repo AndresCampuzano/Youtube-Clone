@@ -15,6 +15,9 @@ export const Variables = {
   colorScrollBarHover: "#797979",
   // Dedicated colors - cards
   colorFontGrayIdle: "#AAAAAA",
+  // - SmallCardTopScroll card
+  colorBackgroundSmallCardTopScroll: "#373737",
+  colorBorderSmallCardTopScroll: "#4d4d4d",
   // Breakpoints using min-width (mobile-first)
   minMobile: "576px",
   minTablet: "768px",
