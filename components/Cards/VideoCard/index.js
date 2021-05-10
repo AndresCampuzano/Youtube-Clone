@@ -3,7 +3,9 @@ import { useEffect, useState } from "react"
 
 import { IconMoreOptions } from "../../Icons/Card/IconMoreOptions"
 import { SmallIconWatchLaterHover } from "./SmallIconWatchLaterHover"
+import { SmallIconAddToQueue } from "./SmallIconAddToQueue"
 import { IconWatchLaterCard } from "../../Icons/Card/IconWatchLaterCard"
+import { IconAddToQueueCard } from "../../Icons/Card/IconAddToQueueCard"
 import {
   _Container,
   _StyledImageMain,
@@ -94,9 +96,9 @@ export const VideoCard = ({
             text="WATCH LATER"
             icon={<IconWatchLaterCard />}
           />
-          <SmallIconWatchLaterHover
+          <SmallIconAddToQueue
             text="ADD TO QUEUE"
-            icon={<IconWatchLaterCard />}
+            icon={<IconAddToQueueCard />}
           />
         </>
       )}

@@ -13,6 +13,8 @@ export const _Container = styled.div`
   align-items: center;
   padding: 0 35px;
   height: 56px;
+  border-top: 1px solid ${Variables.colorGrayDark};
+  border-bottom: 1px solid ${Variables.colorGrayDark};
   background-color: ${Variables.colorNavTrans};
   user-select: none;
   white-space: nowrap;

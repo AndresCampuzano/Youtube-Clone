@@ -5,7 +5,7 @@ import { Variables } from "../../../../styles/Variables"
 export const _Container = styled.div`
   position: absolute;
   z-index: 1;
-  top: 5px;
+  top: 37px;
   right: 5px;
   display: flex;
 `

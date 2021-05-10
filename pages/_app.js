@@ -4,15 +4,15 @@ import Head from "next/head"
 import { Context } from "../components/data/Context"
 
 function MyApp({ Component, pageProps }) {
-  const [renderLeftNavBar, setRenderLeftNavBar] = useState(false)
+  const [bigNavBar, setBigNavBar] = useState(true)
   // Providers
   // Layout
   // Additional props
   return (
     <Context.Provider
       value={{
-        renderLeftNavBar,
-        setRenderLeftNavBar,
+        bigNavBar,
+        setBigNavBar,
       }}
     >
       <Head>

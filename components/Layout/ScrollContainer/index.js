@@ -1,66 +1,31 @@
-import { useRef, useState } from "react"
+import { useContext } from "react"
 
 import { SmallCardTopScroll } from "../../Cards/SmallCardTopScroll"
 import { IconArrowLeftDark } from "../../Icons/TopBar/IconArrowLeftDark"
 import { IconArrowRightDark } from "../../Icons/TopBar/IconArrowRightDark"
 import { _Container, _LeftArrow, _RightArrow } from "./styles"
+import { Context } from "../../data/Context"
+import { useScroll } from "../../hooks/useScroll"
 
 export const ScrollContainer = () => {
-  const scrollContainer = useRef()
-  // Controlling scroll with arrows
-  const [showLeftArrow, setShowLeftArrow] = useState(false)
-  const [showRightArrow, setShowRightArrow] = useState(true)
-  // Controlling scroll by mouse/touches
-  const [isScrolling, setIsScrolling] = useState(false)
-  const [numberScroll, setNumberScroll] = useState()
+  const { bigNavBar } = useContext(Context)
+  const {
+    captureScrollValue,
+    goRightArrow,
+    goLeftArrow,
+    onMouseDown,
+    onMouseUp,
+    onMouseMove,
+    scrollContainer,
+    showLeftArrow,
+    showRightArrow,
+  } = useScroll()
 
-  // Controlling scroll with arrows
-  const captureScrollValue = (e) => {
-    const clientWidth = e.target.clientWidth
-    const scrollLeftValue = e.target.scrollLeft
-    const scrollWidthValue = e.target.scrollWidth
-    const result = scrollLeftValue - scrollWidthValue
-    if (Math.abs(result) === clientWidth) {
-      setShowRightArrow(false)
-    } else {
-      setShowRightArrow(true)
-    }
-    if (e.target.scrollLeft >= 50) {
-      setShowLeftArrow(true)
-    } else {
-      setShowLeftArrow(false)
-    }
-  }
-
-  const goRightArrow = () => {
-    scrollContainer.current.scrollLeft -= 50
-  }
-
-  const goLeftArrow = () => {
-    scrollContainer.current.scrollLeft += 50
-  }
-
-  // Controlling scroll by mouse/touches
-  const onMouseDown = () => {
-    setIsScrolling(true)
-  }
-
-  const onMouseUp = () => {
-    setIsScrolling(false)
-  }
-
-  const onMouseMove = (e) => {
-    setNumberScroll(e.view.innerWidth - e.clientX)
-    if (isScrolling) {
-      const speedToScroll = e.view.innerWidth - e.clientX - numberScroll
-      if (numberScroll < e.view.innerWidth - e.clientX) {
-        scrollContainer.current.scrollLeft += speedToScroll
+  const responsiveStyles = !bigNavBar
+    ? {
+        left: "72px",
       }
-      if (numberScroll > e.view.innerWidth - e.clientX) {
-        scrollContainer.current.scrollLeft -= Math.abs(speedToScroll)
-      }
-    }
-  }
+    : {}
 
   return (
     <_Container
@@ -69,9 +34,10 @@ export const ScrollContainer = () => {
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
+      style={responsiveStyles}
     >
       {showLeftArrow && (
-        <_LeftArrow>
+        <_LeftArrow style={responsiveStyles}>
           <IconArrowLeftDark onClick={goRightArrow} />
         </_LeftArrow>
       )}

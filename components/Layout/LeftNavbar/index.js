@@ -1,6 +1,9 @@
 import { Container } from "./styles"
 
 import { ItemNormal } from "../../ItemsNavbar/ItemNormal"
+// Context
+import { useContext } from "react"
+import { Context } from "../../data/Context"
 // Icons
 import { IconExploreDark } from "../../Icons/NavbarLeft/IconExploreDark"
 import { IconHomeDark } from "../../Icons/NavbarLeft/IconHomeDark"
@@ -22,30 +25,46 @@ import { IconHelpDark } from "../../Icons/NavbarLeft/IconHelpDark"
 import { IconSendFeedbackDark } from "../../Icons/NavbarLeft/IconSendFeedbackDark"
 
 export const LeftNavbar = () => {
+  const { bigNavBar } = useContext(Context)
+
+  const responsiveStyles = !bigNavBar
+    ? {
+        padding: "4px 0",
+        width: "72px",
+      }
+    : {}
+
   return (
-    <Container>
+    <Container style={responsiveStyles}>
       <ItemNormal icon={<IconHomeDark />} title="Home" />
       <ItemNormal icon={<IconExploreDark />} title="Explore" />
       <ItemNormal icon={<IconSubscriptionsDark />} title="Subscriptions" />
       <ItemNormal icon={<IconOriginalsDark />} title="Originals" />
       <ItemNormal icon={<IconYoutubeMusicDark />} title="YouTube Music" />
-      <hr />
+
+      {bigNavBar && <hr />}
+
       <ItemNormal icon={<IconLibraryDark />} title="Library" />
-      <ItemNormal icon={<IconHistoryDark />} title="History" />
-      <ItemNormal icon={<IconYourVideosDark />} title="Your videos" />
-      <ItemNormal icon={<IconWatchLaterDark />} title="Watch later" />
-      <ItemNormal icon={<IconLikedVideosDark />} title="Liked videos" />
-      <hr />
-      <h3>MORE FROM YOUTUBE</h3>
-      <ItemNormal icon={<IconGamingDark />} title="Gaming" />
-      <ItemNormal icon={<IconLiveDark />} title="Live" />
-      <ItemNormal icon={<IconLearningDark />} title="Learning" />
-      <ItemNormal icon={<IconSportsDark />} title="Sports" />
-      <hr />
-      <ItemNormal icon={<IconSettingsDark />} title="Settings" />
-      <ItemNormal icon={<IconReportHistoryDark />} title="Report history" />
-      <ItemNormal icon={<IconHelpDark />} title="Help" />
-      <ItemNormal icon={<IconSendFeedbackDark />} title="Send feedback" />
+
+      {bigNavBar && (
+        <>
+          <ItemNormal icon={<IconHistoryDark />} title="History" />
+          <ItemNormal icon={<IconYourVideosDark />} title="Your videos" />
+          <ItemNormal icon={<IconWatchLaterDark />} title="Watch later" />
+          <ItemNormal icon={<IconLikedVideosDark />} title="Liked videos" />
+          <hr />
+          <h3>MORE FROM YOUTUBE</h3>
+          <ItemNormal icon={<IconGamingDark />} title="Gaming" />
+          <ItemNormal icon={<IconLiveDark />} title="Live" />
+          <ItemNormal icon={<IconLearningDark />} title="Learning" />
+          <ItemNormal icon={<IconSportsDark />} title="Sports" />
+          <hr />
+          <ItemNormal icon={<IconSettingsDark />} title="Settings" />
+          <ItemNormal icon={<IconReportHistoryDark />} title="Report history" />
+          <ItemNormal icon={<IconHelpDark />} title="Help" />
+          <ItemNormal icon={<IconSendFeedbackDark />} title="Send feedback" />
+        </>
+      )}
     </Container>
   )
 }
