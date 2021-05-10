@@ -1,10 +1,12 @@
 import { Container } from "./styles"
+
+import { ItemNormal } from "../../ItemsNavbar/ItemNormal"
+// Icons
 import { IconExploreDark } from "../../Icons/NavbarLeft/IconExploreDark"
 import { IconHomeDark } from "../../Icons/NavbarLeft/IconHomeDark"
 import { IconSubscriptionsDark } from "../../Icons/NavbarLeft/IconSubscriptionsDark"
 import { IconOriginalsDark } from "../../Icons/NavbarLeft/IconOriginalsDark"
 import { IconYoutubeMusicDark } from "../../Icons/NavbarLeft/IconYoutubeMusicDark"
-import { ItemNormal } from "../../ItemsNavbar/ItemNormal"
 import { IconLibraryDark } from "../../Icons/NavbarLeft/IconLibraryDark"
 import { IconHistoryDark } from "../../Icons/NavbarLeft/IconHistoryDark"
 import { IconYourVideosDark } from "../../Icons/NavbarLeft/IconYourVideosDark"

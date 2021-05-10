@@ -2,10 +2,7 @@ import { useState } from "react"
 
 import { _Container, _DivIconContainer, _DivTextContainer } from "./styles"
 
-export const SmallIconWatchLaterHover = ({
-  text = "SmallIconWatchLaterHover",
-  icon,
-}) => {
+export const SmallIconAddToQueue = ({ text = "SmallIconAddToQueue", icon }) => {
   const [hoverText, setHoverText] = useState(false)
   return (
     <_Container

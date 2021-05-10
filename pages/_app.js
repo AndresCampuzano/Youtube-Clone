@@ -1,13 +1,20 @@
-import React from "react"
+import React, { useState } from "react"
 import GlobalStyles from "../styles/GlobalStyles"
 import Head from "next/head"
+import { Context } from "../components/data/Context"
 
 function MyApp({ Component, pageProps }) {
+  const [renderLeftNavBar, setRenderLeftNavBar] = useState(false)
   // Providers
   // Layout
   // Additional props
   return (
-    <>
+    <Context.Provider
+      value={{
+        renderLeftNavBar,
+        setRenderLeftNavBar,
+      }}
+    >
       <Head>
         {/* <!-- Must --> */}
         <meta charSet="utf-8" />
@@ -21,7 +28,7 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="front end, Andres Campuzano Garzon, react developer, "
         />
-        <title>Youtube || Andres Campuzano</title>
+        <title>Youtube Clone || Andres Campuzano</title>
         <meta
           name="author"
           content="Andres Campuzano Garzon, hello@andrescampuzano.com"
@@ -154,7 +161,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalStyles />
       <Component {...pageProps} />
-    </>
+    </Context.Provider>
   )
 }
 

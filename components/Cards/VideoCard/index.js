@@ -89,10 +89,16 @@ export const VideoCard = ({
       onMouseLeave={() => setHoverExtraContent(false)}
     >
       {hoverExtraContent && (
-        <SmallIconWatchLaterHover
-          text="WATCH LATER"
-          icon={<IconWatchLaterCard />}
-        />
+        <>
+          <SmallIconWatchLaterHover
+            text="WATCH LATER"
+            icon={<IconWatchLaterCard />}
+          />
+          <SmallIconWatchLaterHover
+            text="ADD TO QUEUE"
+            icon={<IconWatchLaterCard />}
+          />
+        </>
       )}
 
       <_StyledImageMain

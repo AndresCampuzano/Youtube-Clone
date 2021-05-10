@@ -14,6 +14,7 @@ export const _Container = styled.div`
   padding: 0 35px;
   height: 56px;
   background-color: ${Variables.colorNavTrans};
+  user-select: none;
   white-space: nowrap;
 
   & svg {

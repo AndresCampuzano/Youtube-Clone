@@ -6,10 +6,15 @@ import { IconArrowRightDark } from "../../Icons/TopBar/IconArrowRightDark"
 import { _Container, _LeftArrow, _RightArrow } from "./styles"
 
 export const ScrollContainer = () => {
+  const scrollContainer = useRef()
+  // Controlling scroll with arrows
   const [showLeftArrow, setShowLeftArrow] = useState(false)
   const [showRightArrow, setShowRightArrow] = useState(true)
-  const scrollContainer = useRef()
+  // Controlling scroll by mouse/touches
+  const [isScrolling, setIsScrolling] = useState(false)
+  const [numberScroll, setNumberScroll] = useState()
 
+  // Controlling scroll with arrows
   const captureScrollValue = (e) => {
     const clientWidth = e.target.clientWidth
     const scrollLeftValue = e.target.scrollLeft
@@ -27,19 +32,47 @@ export const ScrollContainer = () => {
     }
   }
 
-  const goRight = () => {
-    // scrollContainer ? (scrollContainer.current.scrollLeft += 200) : null
+  const goRightArrow = () => {
     scrollContainer.current.scrollLeft -= 50
   }
-  const goLeft = () => {
+
+  const goLeftArrow = () => {
     scrollContainer.current.scrollLeft += 50
   }
 
+  // Controlling scroll by mouse/touches
+  const onMouseDown = () => {
+    setIsScrolling(true)
+  }
+
+  const onMouseUp = () => {
+    setIsScrolling(false)
+  }
+
+  const onMouseMove = (e) => {
+    setNumberScroll(e.view.innerWidth - e.clientX)
+    if (isScrolling) {
+      const speedToScroll = e.view.innerWidth - e.clientX - numberScroll
+      if (numberScroll < e.view.innerWidth - e.clientX) {
+        scrollContainer.current.scrollLeft += speedToScroll
+      }
+      if (numberScroll > e.view.innerWidth - e.clientX) {
+        scrollContainer.current.scrollLeft -= Math.abs(speedToScroll)
+      }
+    }
+  }
+
   return (
-    <_Container ref={scrollContainer} onScroll={captureScrollValue}>
+    <_Container
+      ref={scrollContainer}
+      onScroll={captureScrollValue}
+      onMouseDown={onMouseDown}
+      onMouseUp={onMouseUp}
+      onMouseMove={onMouseMove}
+    >
       {showLeftArrow && (
         <_LeftArrow>
-          <IconArrowLeftDark onClick={goRight} />
+          <IconArrowLeftDark onClick={goRightArrow} />
         </_LeftArrow>
       )}
 
@@ -48,9 +81,12 @@ export const ScrollContainer = () => {
       <SmallCardTopScroll text="React JS" />
       <SmallCardTopScroll text="Javascript" />
       <SmallCardTopScroll text="Andres Campuzano" />
-      <SmallCardTopScroll text="Lo Fi" />
-      <SmallCardTopScroll text="Computer Programming" />
       <SmallCardTopScroll text="Next JS" />
+      <SmallCardTopScroll text="Programming" />
+      <SmallCardTopScroll text="Computer Programming" />
+      <SmallCardTopScroll text="Gitlab" />
+      <SmallCardTopScroll text="CSS & HTML" />
+      <SmallCardTopScroll text="Lo Fi" />
       <SmallCardTopScroll text="Night" />
       <SmallCardTopScroll text="Desk setup" />
       <SmallCardTopScroll text="Tesla, Inc." />
@@ -60,10 +96,7 @@ export const ScrollContainer = () => {
       <SmallCardTopScroll text="Chill-out music" />
       <SmallCardTopScroll text="Live" />
       <SmallCardTopScroll text="Muckbang" />
-      <SmallCardTopScroll text="Programming" />
-      <SmallCardTopScroll text="React Native" />
       <SmallCardTopScroll text="Azure DevOps" />
-      <SmallCardTopScroll text="Gitlab" />
       <SmallCardTopScroll text="Tourist Destinations" />
 
       <SmallCardTopScroll text="Recently uploaded" />
@@ -71,7 +104,7 @@ export const ScrollContainer = () => {
 
       {showRightArrow && (
         <_RightArrow>
-          <IconArrowRightDark onClick={goLeft} />
+          <IconArrowRightDark onClick={goLeftArrow} />
         </_RightArrow>
       )}
     </_Container>

@@ -13,9 +13,10 @@ export const TrendingSection = () => {
 
   const handleSearch = async () => {
     const countryCode = "US"
+    const maxResults = 12
     axios
       .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=12&regionCode=${countryCode}&key=${process.env.URL_KEY}`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${maxResults}&regionCode=${countryCode}&key=${process.env.URL_KEY}`
       )
       .then(({ data: { items } }) => {
         setData(items)
