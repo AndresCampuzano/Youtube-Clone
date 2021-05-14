@@ -9,12 +9,7 @@ function MyApp({ Component, pageProps }) {
   // Layout
   // Additional props
   return (
-    <Context.Provider
-      value={{
-        bigNavBar,
-        setBigNavBar,
-      }}
-    >
+    <>
       <Head>
         {/* <!-- Must --> */}
         <meta charSet="utf-8" />
@@ -159,9 +154,16 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="manifest" href="/manifest.json" />
       </Head>
-      <GlobalStyles />
-      <Component {...pageProps} />
-    </Context.Provider>
+      <Context.Provider
+        value={{
+          bigNavBar,
+          setBigNavBar,
+        }}
+      >
+        <GlobalStyles />
+        <Component {...pageProps} />
+      </Context.Provider>
+    </>
   )
 }
 
