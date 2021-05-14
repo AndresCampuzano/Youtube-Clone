@@ -1,15 +1,15 @@
 import styled from "styled-components"
 
-import { Variables } from "../../../styles/Variables"
+import { Variables } from "../../../../styles/Variables"
 
-export const Container = styled.nav`
+export const _Container = styled.nav`
   position: fixed;
   top: 56px;
   bottom: 0;
   left: 0;
   overflow: hidden;
-  padding: 12px 0;
-  width: 240px;
+  padding: 4px 0;
+  width: 72px;
   background-color: ${Variables.colorNav};
 
   & :hover {
@@ -27,5 +27,13 @@ export const Container = styled.nav`
     font-size: 14px;
     font-weight: 500;
     color: ${Variables.colorTextNavbar};
+  }
+
+  @media (min-width: 1329px) {
+    display: none;
+  }
+
+  @media (max-width: 807px) {
+    display: none;
   }
 `

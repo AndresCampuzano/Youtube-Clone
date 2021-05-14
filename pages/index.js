@@ -1,4 +1,5 @@
-import { LeftNavbar } from "../components/Layout/LeftNavbar"
+import { LeftNavBarBig } from "../components/Layout/LeftNavbar/LeftNavBarBig"
+import { LeftNavBarSmall } from "../components/Layout/LeftNavbar/LeftNavbarSmall"
 import { PageManager } from "../components/Layout/PageManager"
 import { ScrollContainer } from "../components/Layout/ScrollContainer"
 import { TopNavbar } from "../components/Layout/TopNavbar"
@@ -8,7 +9,8 @@ export default function index() {
     <>
       <TopNavbar />
       <ScrollContainer />
-      <LeftNavbar />
+      <LeftNavBarBig />
+      <LeftNavBarSmall />
       <PageManager />
     </>
   )

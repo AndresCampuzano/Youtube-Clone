@@ -26,6 +26,14 @@ export const _Container = styled.div`
   & ::-webkit-scrollbar {
     display: none;
   }
+
+  @media (max-width: 1328px) {
+    left: 72px;
+  }
+
+  @media (max-width: 807px) {
+    left: 0px;
+  }
 `
 
 export const _LeftArrow = styled.div`
@@ -45,6 +53,14 @@ export const _LeftArrow = styled.div`
 
   & svg {
     margin-left: -25px;
+  }
+
+  @media (max-width: 1328px) {
+    left: 72px;
+  }
+
+  @media (max-width: 807px) {
+    left: 0px;
   }
 `
 

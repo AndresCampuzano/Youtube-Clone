@@ -1,14 +1,10 @@
-import { useContext } from "react"
-
 import { SmallCardTopScroll } from "../../Cards/SmallCardTopScroll"
 import { IconArrowLeftDark } from "../../Icons/TopBar/IconArrowLeftDark"
 import { IconArrowRightDark } from "../../Icons/TopBar/IconArrowRightDark"
 import { _Container, _LeftArrow, _RightArrow } from "./styles"
-import { Context } from "../../data/Context"
 import { useScroll } from "../../hooks/useScroll"
 
 export const ScrollContainer = () => {
-  const { bigNavBar } = useContext(Context)
   const {
     captureScrollValue,
     goRightArrow,
@@ -21,12 +17,6 @@ export const ScrollContainer = () => {
     showRightArrow,
   } = useScroll()
 
-  const responsiveStyles = !bigNavBar
-    ? {
-        left: "72px",
-      }
-    : {}
-
   return (
     <_Container
       ref={scrollContainer}
@@ -34,10 +24,9 @@ export const ScrollContainer = () => {
       onMouseDown={onMouseDown}
       onMouseUp={onMouseUp}
       onMouseMove={onMouseMove}
-      style={responsiveStyles}
     >
       {showLeftArrow && (
-        <_LeftArrow style={responsiveStyles}>
+        <_LeftArrow>
           <IconArrowLeftDark onClick={goRightArrow} />
         </_LeftArrow>
       )}

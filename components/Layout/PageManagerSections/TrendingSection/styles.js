@@ -43,4 +43,14 @@ export const _Container = styled.section`
       display: none;
     }
   }
+
+  @media (max-width: 511px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+
+    /* Removing elements from dom */
+    & article:nth-last-of-type(-n + 6) {
+      display: none;
+    }
+  }
 `

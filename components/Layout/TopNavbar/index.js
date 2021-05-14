@@ -1,7 +1,6 @@
 import { useContext } from "react"
 
 import { Context } from "../../data/Context"
-import { useWindowSize } from "../../hooks/useWindowSize"
 import { IconAppsDark } from "../../Icons/TopBar/IconAppsDark"
 import { IconBellDark } from "../../Icons/TopBar/IconBellDark"
 import { IconMenuDark } from "../../Icons/TopBar/IconMenuDark"
@@ -19,8 +18,6 @@ import {
 
 export const TopNavbar = () => {
   const { bigNavBar, setBigNavBar } = useContext(Context)
-
-  useWindowSize()
 
   const handleMenuClick = () => {
     setBigNavBar(!bigNavBar)
