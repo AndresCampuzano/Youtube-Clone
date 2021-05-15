@@ -37,19 +37,42 @@ export const _LeftIconsContainer = styled.div`
   }
 `
 
-export const _CenterContainer = styled.div``
+// export const _CenterContainer = styled.div``
 
 export const _RightIconsContainer = styled.div`
   display: flex;
   align-items: center;
 
   & svg {
-    margin-left: 8px;
+    margin-left: 5px;
     padding: 8px;
+  }
+`
 
-    & :last-of-type {
-      margin-right: 16px;
+export const _HideSmallScreens = styled.div`
+  display: flex;
+  align-items: center;
+
+  & svg {
+    & :first-of-type {
+      @media (max-width: 466px) {
+        display: none;
+      }
     }
+  }
+
+  @media (min-width: 657px) {
+    display: none;
+  }
+`
+
+export const _HideBellSmallScreens = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+
+  @media (max-width: 466px) {
+    display: none;
   }
 `
 
