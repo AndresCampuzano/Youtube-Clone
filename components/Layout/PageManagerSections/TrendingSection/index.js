@@ -24,6 +24,12 @@ export const TrendingSection = () => {
       .catch((error) => {
         console.error("error: ", error)
       })
+
+    // axios
+    //   .get(
+    //     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${maxResults}&regionCode=${countryCode}&key=${process.env.URL_KEY}`
+    //   )
+    //   .then(({ data: { items } }) => console.log(items[0]))
   }
   return (
     <_Container>
@@ -34,6 +40,7 @@ export const TrendingSection = () => {
             title,
             channelId,
             channelTitle,
+            publishedAt,
             thumbnails: {
               medium: { url },
             },
@@ -47,6 +54,7 @@ export const TrendingSection = () => {
             channelTitle={channelTitle}
             viewCount={viewCount}
             channelId={channelId}
+            publishedAt={publishedAt}
           />
         )
       )}
