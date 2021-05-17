@@ -37,10 +37,10 @@ export const _InputStyles = styled.div`
   background-color: ${Variables.colorSearchBar};
 
   & input {
+    outline: none;
     width: 35vw;
     max-width: 540px;
     height: 30px;
-    outline: none;
     background-color: transparent;
     font-size: 16px;
     color: white;
