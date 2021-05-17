@@ -1,36 +1,7 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
-
 import { VideoCard } from "../../../Cards/VideoCard"
 import { _Container } from "./styles"
 
-export const TrendingSection = () => {
-  const [data, setData] = useState(null)
-
-  useEffect(() => {
-    handleSearch()
-  }, [])
-
-  const handleSearch = async () => {
-    const countryCode = "US"
-    const maxResults = 12
-    axios
-      .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${maxResults}&regionCode=${countryCode}&key=${process.env.URL_KEY}`
-      )
-      .then(({ data: { items } }) => {
-        setData(items)
-      })
-      .catch((error) => {
-        console.error("error: ", error)
-      })
-
-    // axios
-    //   .get(
-    //     `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=${maxResults}&regionCode=${countryCode}&key=${process.env.URL_KEY}`
-    //   )
-    //   .then(({ data: { items } }) => console.log(items[0]))
-  }
+export const TrendingSection = ({ data }) => {
   return (
     <_Container>
       {data?.map(
