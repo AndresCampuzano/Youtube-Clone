@@ -1,4 +1,4 @@
-import { Container, _InputStyles } from "./styles"
+import { _Container, _InputStyles, _FormStyles } from "./styles"
 import { IconLoupeDark } from "../Icons/TopBar/IconLoupeDark"
 import { IconMicroDark } from "../Icons/TopBar/IconMicroDark"
 
@@ -8,16 +8,16 @@ export const SearchBar = () => {
   }
 
   return (
-    <Container>
-      <form onSubmit={handleSubmit}>
+    <_Container>
+      <_FormStyles onSubmit={handleSubmit}>
         <_InputStyles>
           <input type="text" placeholder="Search" />
         </_InputStyles>
         <button>
           <IconLoupeDark />
         </button>
-      </form>
+      </_FormStyles>
       <IconMicroDark />
-    </Container>
+    </_Container>
   )
 }

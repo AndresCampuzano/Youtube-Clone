@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const _Container = styled.section`
   margin: 24px 32px;
   border-top: 4px solid #303030;
+  border-bottom: 4px solid #303030;
 
   & h3 {
     margin: 20px 0;
@@ -18,6 +19,7 @@ export const _ContainerCards = styled.div`
   /* grid-template-rows: repeat(2, 1fr); */
   grid-column-gap: 16px;
   /* grid-row-gap: 32px; */
+  margin-bottom: 40px;
 
   @media (max-width: 2303px) {
     grid-template-columns: repeat(5, 1fr);
@@ -57,10 +59,7 @@ export const _ContainerCards = styled.div`
 
   @media (max-width: 719px) {
     grid-template-columns: repeat(1, 1fr);
-
-    /* Removing elements from dom */
-    & article:nth-last-of-type(-n + 5) {
-      display: none;
-    }
+    grid-template-rows: repeat(2, 1fr);
+    grid-row-gap: 32px;
   }
 `

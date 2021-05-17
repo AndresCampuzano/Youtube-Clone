@@ -2,7 +2,7 @@ import styled from "styled-components"
 
 import { Variables } from "../../styles/Variables"
 
-export const Container = styled.div`
+export const _Container = styled.div`
   display: flex;
   align-items: center;
   margin: 0 35px;
@@ -10,22 +10,22 @@ export const Container = styled.div`
   @media (max-width: 656px) {
     display: none;
   }
+`
 
-  & form {
-    display: flex;
-    align-items: center;
+export const _FormStyles = styled.div`
+  display: flex;
+  align-items: center;
 
-    & button {
-      margin-right: 8px;
-      width: 65px;
-      height: 32px;
-      border-top-right-radius: 2px;
-      border-bottom-right-radius: 2px;
-      background-color: ${Variables.colorGrayDark};
+  & button {
+    margin-right: 8px;
+    width: 65px;
+    height: 32px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    background-color: ${Variables.colorGrayDark};
 
-      & :hover {
-        cursor: pointer;
-      }
+    & :hover {
+      cursor: pointer;
     }
   }
 `
@@ -35,11 +35,15 @@ export const _InputStyles = styled.div`
   border-top-left-radius: 2px;
   border-bottom-left-radius: 2px;
   background-color: ${Variables.colorSearchBar};
+
   & input {
     width: 35vw;
     max-width: 540px;
     height: 30px;
+    outline: none;
     background-color: transparent;
+    font-size: 16px;
+    color: white;
 
     @media (max-width: 868px) {
       width: 20vw;
